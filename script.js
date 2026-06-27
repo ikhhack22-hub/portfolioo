@@ -26,3 +26,18 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+const navToggle = document.querySelector('.nav-toggle');
+const mobileMenu = document.querySelector('.mobile-menu');
+if (navToggle && mobileMenu) {
+  navToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    navToggle.classList.toggle('active');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      navToggle.classList.remove('active');
+    });
+  });
+}
